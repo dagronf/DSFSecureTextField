@@ -22,6 +22,10 @@ class ViewController: NSViewController {
 		}
 	}
 
+	@IBOutlet weak var toggleField: DSFSecureTextField!
+	@IBAction func toggled(_ sender: NSButton) {
+		self.toggleField.allowShowPassword = sender.state == .on
+	}
 
 }
 

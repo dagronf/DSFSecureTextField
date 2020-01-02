@@ -10,6 +10,8 @@ NSSecureTextField with a 'visibility' button.
 
 Sometimes it's nice to be able to see the contents of a password field. `DSFSecureTextField` adds a visibility button to the existing `NSSecureTextField` allowing your users to show or hide the contents of the field.
 
+Optionally, you can choose to dynamically remove the button from the control (for example, if you want to be able to let your users choose whether to show the password or not via a preference)
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSecureTextField/DSFSecureTextField.gif)
 
 ## Integrate

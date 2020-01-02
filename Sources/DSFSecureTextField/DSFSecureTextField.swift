@@ -26,14 +26,23 @@
 
 import AppKit
 
+@IBDesignable
 public class DSFSecureTextField: NSSecureTextField {
-	@objc private dynamic var showsPassword: Bool = false {
+
+	private var visibilityButton: DSFPasswordButton?
+
+	@objc dynamic var showsPassword: Bool = false {
 		didSet {
-			update()
+			updateForPasswordVisibility()
 		}
 	}
 
-	private var visibilityButton = DSFPasswordButton(frame: NSRect(x: 0, y: 0, width: 16, height: 16))
+	@IBInspectable	@objc dynamic var allowShowPassword: Bool = true {
+		didSet {
+			self.showsPassword = false
+			self.configureButtonForState()
+		}
+	}
 
 	public override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
@@ -44,43 +53,61 @@ public class DSFSecureTextField: NSSecureTextField {
 		super.init(coder: coder)
 	}
 
-	public override func awakeFromNib() {
-		super.awakeFromNib()
+	public override func viewDidMoveToWindow() {
+		super.viewDidMoveToWindow()
 		self.setup()
 	}
 
+	private func configureButtonForState() {
+
+		if allowShowPassword {
+
+			let button = DSFPasswordButton(frame: NSRect(x: 0, y: 0, width: 16, height: 16))
+
+			self.visibilityButton = button
+			button.action = #selector(visibilityChanged(_:))
+			button.target = self
+			self.addSubview(button)
+
+			self.addConstraint(
+				NSLayoutConstraint(
+					item: button, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
+			self.addConstraint(
+				NSLayoutConstraint(
+					item: button, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0))
+
+			button.addConstraint(
+				NSLayoutConstraint(
+					item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1, constant: 0
+				)
+			)
+
+			self.addConstraint(
+				NSLayoutConstraint(
+					item: button, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
+			self.addConstraint(
+				NSLayoutConstraint(
+					item: button, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -2))
+
+			button.needsLayout = true
+			self.needsUpdateConstraints = true
+		}
+		else {
+			self.visibilityButton?.removeFromSuperview()
+			self.visibilityButton = nil
+		}
+		self.window?.recalculateKeyViewLoop()
+	}
+
+
 	private func setup() {
+		self.translatesAutoresizingMaskIntoConstraints = false
+
+		// By default, the password should ALWAYS be hidden
 		self.showsPassword = false
 
-		self.translatesAutoresizingMaskIntoConstraints = false
-		self.visibilityButton.action = #selector(visibilityChanged(_:))
-		self.visibilityButton.target = self
-		self.addSubview(self.visibilityButton)
-
-	 self.addConstraint(
-		 NSLayoutConstraint(
-			item: self.visibilityButton, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
-		self.addConstraint(
-			NSLayoutConstraint(
-			  item: self.visibilityButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0))
-
-		self.visibilityButton.addConstraint(
-			NSLayoutConstraint(
-				item: self.visibilityButton, attribute: .width, relatedBy: .equal, toItem: self.visibilityButton, attribute: .height, multiplier: 1, constant: 0
-			)
-		)
-
-		self.addConstraint(
-			NSLayoutConstraint(
-		 		item: self.visibilityButton, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-		self.addConstraint(
-			NSLayoutConstraint(
-				item: self.visibilityButton, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -2))
-
-		self.visibilityButton.needsLayout = true
-		self.needsUpdateConstraints = true
-
-		self.update()
+		self.configureButtonForState()
+		self.updateForPasswordVisibility()
 	}
 
 	// MARK: Updates
@@ -90,7 +117,7 @@ public class DSFSecureTextField: NSSecureTextField {
 		self.showsPassword = (sender.state == .on)
 	}
 
-	private func update() {
+	private func updateForPasswordVisibility() {
 		let str = self.cell?.stringValue ?? ""
 
 		if self.window?.firstResponder == self.currentEditor() {
@@ -100,7 +127,16 @@ public class DSFSecureTextField: NSSecureTextField {
 
 		let oldCell: NSTextFieldCell = self.cell as! NSTextFieldCell
 
-		let newCell = self.showsPassword ? DSFPlainTextFieldCell() : DSFPasswordTextFieldCell()
+		let newCell: NSTextFieldCell!
+		if self.allowShowPassword {
+			newCell = self.showsPassword ? DSFPlainTextFieldCell() : DSFPasswordTextFieldCell()
+			self.cell = newCell
+		}
+		else {
+			newCell = NSSecureTextFieldCell()
+			self.cell = newCell
+		}
+
 		newCell.isEditable = true
 		newCell.placeholderString = oldCell.placeholderString
 		newCell.isScrollable = true
@@ -110,11 +146,10 @@ public class DSFSecureTextField: NSSecureTextField {
 		newCell.backgroundStyle = oldCell.backgroundStyle
 		newCell.bezelStyle = oldCell.bezelStyle
 		newCell.drawsBackground = oldCell.drawsBackground
-		self.cell = newCell
 
 		self.cell?.stringValue = str
 
-		self.visibilityButton.needsLayout = true
+		self.visibilityButton?.needsLayout = true
 		self.needsUpdateConstraints = true
 	}
 }
@@ -266,9 +301,9 @@ private class DSFPasswordButton: NSButton {
 
 		let highContrast = NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast
 
-		if state == .on {
+		if state == .off {
 
-			let fillColor = NSColor.red
+			let fillColor = NSColor.secondaryLabelColor
 
 			//// Bezier Drawing
 			let bezierPath = NSBezierPath()
@@ -322,7 +357,7 @@ private class DSFPasswordButton: NSButton {
 			bezierPath.fill()
 		}
 		else {
-			let fillColor = NSColor.secondaryLabelColor
+			let fillColor = NSColor.red
 
 			let bezierPath = NSBezierPath()
 			bezierPath.move(to: NSPoint(x: 16.01, y: 5))
