@@ -5,7 +5,6 @@ NSSecureTextField with a 'visibility' button.
 ![](https://img.shields.io/github/v/tag/dagronf/DSFSecureTextField) ![](https://img.shields.io/badge/macOS-10.10+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
-
 ## Why
 
 Sometimes it's nice to be able to see the contents of a password field. `DSFSecureTextField` adds a visibility button to the existing `NSSecureTextField` allowing your users to show or hide the contents of the field.
@@ -18,7 +17,9 @@ Optionally, you can choose to dynamically remove the button from the control (fo
 
 * Copy the file `DSFSecureTextField.swift` into your project
 * Or, use CocoaPods
+
 	`pod 'DSFSecureTextField', :git => 'https://github.com/dagronf/DSFSecureTextField/'`
+	
 * Or, use Swift Package Manager
 
 ## Usage
@@ -36,6 +37,22 @@ Since `DSFSecureTextField` inherits from `NSSecureTextField`, you can create it 
 ### Demo
 
 There is a very simple project in the `Demos` folder.
+
+## Configuration
+
+### `allowShowPassword`  ![](https://img.shields.io/badge/Available-InterfaceBuilder-green) ![](https://img.shields.io/badge/Available-Code-blue)
+
+Set to `true` to _allow_ the control to show the password in plain text.  Useful if you want to be able to control whether the user can choose (eg. via preferences) to make the password visible.
+
+### `displayToggleButton`  ![](https://img.shields.io/badge/Available-InterfaceBuilder-green) ![](https://img.shields.io/badge/Available-Code-blue)
+
+When true, displays an 'eye' button embedded within the password field that allows the user to toggle the visibility of the password.
+If false, the application needs to provide its own mechanism for setting `passwordIsVisible`. 
+
+### `passwordIsVisible`  ![](https://img.shields.io/badge/Available-Code-blue)
+
+When true, the password is displayed as plain text.
+When false, the password is obscured.
 
 ## License
 

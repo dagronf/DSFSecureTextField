@@ -27,5 +27,9 @@ class ViewController: NSViewController {
 		self.toggleField.allowShowPassword = sender.state == .on
 	}
 
+	@IBOutlet weak var showHidePasswordField: DSFSecureTextField!
+	@IBAction func showHidePassword(_ sender: NSButton) {
+		self.showHidePasswordField.passwordIsVisible = (sender.state == .on)
+	}
 }
 

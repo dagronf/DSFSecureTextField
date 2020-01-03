@@ -29,20 +29,32 @@ import AppKit
 @IBDesignable
 public class DSFSecureTextField: NSSecureTextField {
 
-	private var visibilityButton: DSFPasswordButton?
-
-	@objc dynamic var showsPassword: Bool = false {
+	/// Whether to display a toggle button into the control to control the visibility
+	@IBInspectable
+	@objc public dynamic var displayToggleButton: Bool = true {
 		didSet {
-			updateForPasswordVisibility()
+			self.updateForPasswordVisibility()
 		}
 	}
 
-	@IBInspectable	@objc dynamic var allowShowPassword: Bool = true {
+	/// Allow or disallow showing plain text password
+	@IBInspectable
+	@objc public dynamic var allowShowPassword: Bool = true {
 		didSet {
-			self.showsPassword = false
+			self.passwordIsVisible = false
 			self.configureButtonForState()
 		}
 	}
+
+	/// Show or obscure the password
+	@objc public dynamic var passwordIsVisible: Bool = false {
+		didSet {
+			self.updateForPasswordVisibility()
+		}
+	}
+
+	// Embedded button if the style requires it
+	private var visibilityButton: DSFPasswordButton?
 
 	public override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
@@ -53,14 +65,19 @@ public class DSFSecureTextField: NSSecureTextField {
 		super.init(coder: coder)
 	}
 
-	public override func viewDidMoveToWindow() {
+	override public func viewDidMoveToWindow() {
 		super.viewDidMoveToWindow()
 		self.setup()
 	}
+}
 
-	private func configureButtonForState() {
+// MARK: - Private (DSFSecureTextField)
 
-		if allowShowPassword {
+private extension DSFSecureTextField {
+
+	func configureButtonForState() {
+
+		if self.allowShowPassword && self.displayToggleButton {
 
 			let button = DSFPasswordButton(frame: NSRect(x: 0, y: 0, width: 16, height: 16))
 
@@ -100,11 +117,11 @@ public class DSFSecureTextField: NSSecureTextField {
 	}
 
 
-	private func setup() {
+	func setup() {
 		self.translatesAutoresizingMaskIntoConstraints = false
 
 		// By default, the password should ALWAYS be hidden
-		self.showsPassword = false
+		self.passwordIsVisible = false
 
 		self.configureButtonForState()
 		self.updateForPasswordVisibility()
@@ -113,11 +130,11 @@ public class DSFSecureTextField: NSSecureTextField {
 	// MARK: Updates
 
 	// Triggered when the user clicks the embedded button
-	@objc private func visibilityChanged(_ sender: NSButton) {
-		self.showsPassword = (sender.state == .on)
+	@objc func visibilityChanged(_ sender: NSButton) {
+		self.passwordIsVisible = (sender.state == .on)
 	}
 
-	private func updateForPasswordVisibility() {
+	func updateForPasswordVisibility() {
 		let str = self.cell?.stringValue ?? ""
 
 		if self.window?.firstResponder == self.currentEditor() {
@@ -125,16 +142,29 @@ public class DSFSecureTextField: NSSecureTextField {
 			self.abortEditing()
 		}
 
+		let newCell: NSTextFieldCell!
 		let oldCell: NSTextFieldCell = self.cell as! NSTextFieldCell
 
-		let newCell: NSTextFieldCell!
-		if self.allowShowPassword {
-			newCell = self.showsPassword ? DSFPlainTextFieldCell() : DSFPasswordTextFieldCell()
-			self.cell = newCell
+		if !self.displayToggleButton {
+			// Button should NOT be included
+			if self.passwordIsVisible {
+				newCell = NSTextFieldCell()
+				self.cell = newCell
+			}
+			else {
+				newCell = NSSecureTextFieldCell()
+				self.cell = newCell
+			}
 		}
 		else {
-			newCell = NSSecureTextFieldCell()
-			self.cell = newCell
+			if self.allowShowPassword {
+				newCell = self.passwordIsVisible ? DSFPlainTextFieldCell() : DSFPasswordTextFieldCell()
+				self.cell = newCell
+			}
+			else {
+				newCell = NSSecureTextFieldCell()
+				self.cell = newCell
+			}
 		}
 
 		newCell.isEditable = true
@@ -154,7 +184,7 @@ public class DSFSecureTextField: NSSecureTextField {
 	}
 }
 
-// MARK: - Private implementation
+// MARK: - Private implementation (Text Field Cells)
 
 private class DSFPasswordTextFieldCell: NSSecureTextFieldCell {
 	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
@@ -206,6 +236,8 @@ private class DSFPlainTextFieldCell: NSTextFieldCell {
 		super.drawInterior(withFrame: newRect, in: controlView)
 	}
 }
+
+// MARK: - Private implementation (Embedded button)
 
 private class DSFPasswordButton: NSButton {
 
