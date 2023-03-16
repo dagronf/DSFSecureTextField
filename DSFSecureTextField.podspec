@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DSFSecureTextField"
-  s.version      = "0.9"
+  s.version      = "2.0.0"
   s.summary      = "macOS secure password field with a 'visibility' button"
   s.description  = <<-DESC
     macOS secure password field with a 'visibility' button

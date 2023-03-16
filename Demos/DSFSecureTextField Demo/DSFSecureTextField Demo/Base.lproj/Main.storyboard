@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -685,11 +685,11 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SecureTextFieldWindow" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -707,181 +707,505 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DSFSecureTextField_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="685" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="941" height="495"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <gridView xPlacement="leading" yPlacement="center" rowAlignment="none" rowSpacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="iVI-tu-iZ5">
-                                <rect key="frame" x="20" y="121" width="645" height="129"/>
-                                <rows>
-                                    <gridRow id="7OY-tD-4PM"/>
-                                    <gridRow id="FdV-dc-KyW"/>
-                                    <gridRow id="JL3-CX-dx4"/>
-                                    <gridRow id="xNt-k6-A65"/>
-                                </rows>
-                                <columns>
-                                    <gridColumn xPlacement="trailing" id="Lji-Vl-I7h"/>
-                                    <gridColumn id="Wq2-CS-ZqQ"/>
-                                </columns>
-                                <gridCells>
-                                    <gridCell row="7OY-tD-4PM" column="Lji-Vl-I7h" id="Lc1-vd-6hl">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxm-qH-jO4">
-                                            <rect key="frame" x="18" y="105" width="105" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Primary Network" id="Ya2-cv-aeJ">
-                                                <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </gridCell>
-                                    <gridCell row="7OY-tD-4PM" column="Wq2-CS-ZqQ" id="mV9-9h-Pz0">
-                                        <secureTextField key="contentView" horizontalHuggingPriority="99" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KzR-cB-tSP" customClass="DSFSecureTextField" customModule="DSFSecureTextField_Demo" customModuleProvider="target">
-                                            <rect key="frame" x="127" y="96" width="518" height="33"/>
-                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Primary01x" placeholderString="Just type…" usesSingleLineMode="YES" id="b6w-tz-JuM">
-                                                <font key="font" size="24" name="Menlo-Regular"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <allowedInputSourceLocales>
-                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                </allowedInputSourceLocales>
-                                            </secureTextFieldCell>
-                                        </secureTextField>
-                                    </gridCell>
-                                    <gridCell row="FdV-dc-KyW" column="Lji-Vl-I7h" id="Kly-VE-guo">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-jt-ByM">
-                                            <rect key="frame" x="40" y="67" width="83" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Super Secret" id="kMi-f0-JoB">
-                                                <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </gridCell>
-                                    <gridCell row="FdV-dc-KyW" column="Wq2-CS-ZqQ" id="BAI-kr-Ywn">
-                                        <secureTextField key="contentView" horizontalHuggingPriority="99" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t6j-7h-g1i" customClass="DSFSecureTextField" customModule="DSFSecureTextField_Demo" customModuleProvider="target">
-                                            <rect key="frame" x="127" y="64" width="518" height="21"/>
-                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title=".SuperSekrit" placeholderString="Super Secret Goes here" usesSingleLineMode="YES" id="XQG-UG-GIc">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <allowedInputSourceLocales>
-                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                </allowedInputSourceLocales>
-                                            </secureTextFieldCell>
-                                        </secureTextField>
-                                    </gridCell>
-                                    <gridCell row="JL3-CX-dx4" column="Lji-Vl-I7h" id="T85-f0-cjf">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Scm-ai-4Va">
-                                            <rect key="frame" x="35" y="35" width="88" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Last and Final" id="WpB-DE-gnq">
-                                                <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </gridCell>
-                                    <gridCell row="JL3-CX-dx4" column="Wq2-CS-ZqQ" id="AFv-Oo-3xM">
-                                        <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-fE-bGw">
-                                            <rect key="frame" x="127" y="32" width="518" height="21"/>
-                                            <subviews>
-                                                <secureTextField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="30B-Th-8q5" customClass="DSFSecureTextField" customModule="DSFSecureTextField_Demo" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="441" height="21"/>
-                                                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="last@and#FINAL~" usesSingleLineMode="YES" id="wDz-3e-PAd">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        <allowedInputSourceLocales>
-                                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                        </allowedInputSourceLocales>
-                                                    </secureTextFieldCell>
-                                                </secureTextField>
-                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sYu-RJ-ocq">
-                                                    <rect key="frame" x="443" y="-7" width="81" height="32"/>
-                                                    <buttonCell key="cell" type="push" title="Toggle" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aFs-is-wIt">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="toggled:" target="XfG-lQ-9wD" id="5MA-Vh-x5V"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <visibilityPriorities>
-                                                <integer value="1000"/>
-                                                <integer value="1000"/>
-                                            </visibilityPriorities>
-                                            <customSpacing>
-                                                <real value="3.4028234663852886e+38"/>
-                                                <real value="3.4028234663852886e+38"/>
-                                            </customSpacing>
-                                        </stackView>
-                                    </gridCell>
-                                    <gridCell row="xNt-k6-A65" column="Lji-Vl-I7h" id="kYe-hc-9VC">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YaL-Se-kNo">
-                                            <rect key="frame" x="-2" y="3" width="125" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Independent Button" id="6o4-9g-Kwc">
-                                                <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </gridCell>
-                                    <gridCell row="xNt-k6-A65" column="Wq2-CS-ZqQ" id="iWO-8h-Dxh">
-                                        <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lss-aw-Dw5">
-                                            <rect key="frame" x="127" y="0.0" width="518" height="21"/>
-                                            <subviews>
-                                                <secureTextField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4WU-NW-3PD" customClass="DSFSecureTextField" customModule="DSFSecureTextField_Demo" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="448" height="21"/>
-                                                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Noodles1234." usesSingleLineMode="YES" id="HN4-UQ-qn1">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        <allowedInputSourceLocales>
-                                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                        </allowedInputSourceLocales>
-                                                    </secureTextFieldCell>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="displayToggleButton" value="NO"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowShowPassword" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </secureTextField>
-                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FnK-1d-qVw">
-                                                    <rect key="frame" x="450" y="-7" width="74" height="32"/>
-                                                    <buttonCell key="cell" type="push" title="Show" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sZE-T0-AyX">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="showHidePassword:" target="XfG-lQ-9wD" id="aDY-24-0AI"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <visibilityPriorities>
-                                                <integer value="1000"/>
-                                                <integer value="1000"/>
-                                            </visibilityPriorities>
-                                            <customSpacing>
-                                                <real value="3.4028234663852886e+38"/>
-                                                <real value="3.4028234663852886e+38"/>
-                                            </customSpacing>
-                                        </stackView>
-                                    </gridCell>
-                                </gridCells>
-                            </gridView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="10" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtB-wp-bkA">
+                                <rect key="frame" x="20" y="20" width="901" height="455"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="10" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZP-dj-T4E">
+                                        <rect key="frame" x="-2" y="434" width="905" height="21"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Default Styles" allowsEditingTextAttributes="YES" id="ufn-Wf-JTf">
+                                            <font key="font" size="17" name="SFProDisplay-Semibold"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="10" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="10" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ews-JY-Bfg">
+                                        <rect key="frame" x="0.0" y="307" width="773" height="119"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q5z-VP-Zoi">
+                                                <rect key="frame" x="8" y="98" width="765" height="21"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-jt-ByM">
+                                                        <rect key="frame" x="-2" y="3" width="88" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Default size" id="kMi-f0-JoB">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <secureTextField horizontalHuggingPriority="10" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t6j-7h-g1i" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                        <rect key="frame" x="92" y="0.0" width="673" height="21"/>
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title=".SuperSekrit1" placeholderString="Super Secret Goes here" usesSingleLineMode="YES" id="XQG-UG-GIc">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.enabled" id="Wa4-8f-aWs"/>
+                                                        </connections>
+                                                    </secureTextField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LtZ-qB-tTx">
+                                                <rect key="frame" x="8" y="71" width="765" height="19"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aah-Fb-PaH">
+                                                        <rect key="frame" x="-2" y="2" width="88" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Smaller size" id="xJJ-8c-9pb">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gew-ay-EuX" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                        <rect key="frame" x="92" y="0.0" width="673" height="19"/>
+                                                        <secureTextFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="copRgXf+!Ze1o0nI" placeholderString="Super Secret Goes here" usesSingleLineMode="YES" id="CbO-YX-Ul8">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.enabled" id="qM3-ro-uhB"/>
+                                                        </connections>
+                                                    </secureTextField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1s-M4-Mjr">
+                                                <rect key="frame" x="8" y="30" width="765" height="33"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="497-3k-Kh8">
+                                                        <rect key="frame" x="-2" y="9" width="88" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Larger Font" id="qHi-jB-k99">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KzR-cB-tSP" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                        <rect key="frame" x="92" y="0.0" width="673" height="33"/>
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Primary01x" placeholderString="Just type…" usesSingleLineMode="YES" id="b6w-tz-JuM">
+                                                            <font key="font" size="24" name="Menlo-Regular"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.enabled" id="5tE-8C-Tc8"/>
+                                                        </connections>
+                                                    </secureTextField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-CK-DOb">
+                                                <rect key="frame" x="8" y="0.0" width="765" height="22"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JVR-WM-aEH">
+                                                        <rect key="frame" x="-2" y="3" width="88" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Round Border" id="3sM-dB-iD3">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O5L-XO-fZP" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                        <rect key="frame" x="92" y="0.0" width="673" height="22"/>
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="ranting-spew-deferral-overcrowd-luckily" placeholderString="Super Secret Goes here" usesSingleLineMode="YES" bezelStyle="round" id="rci-9w-AkV">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.enabled" id="S3o-KW-vmQ"/>
+                                                        </connections>
+                                                    </secureTextField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
+                                        <constraints>
+                                            <constraint firstItem="JVR-WM-aEH" firstAttribute="width" secondItem="cbJ-jt-ByM" secondAttribute="width" id="DgX-UM-8Xq"/>
+                                            <constraint firstItem="Aah-Fb-PaH" firstAttribute="width" secondItem="cbJ-jt-ByM" secondAttribute="width" id="OSU-Jc-s9a"/>
+                                            <constraint firstItem="497-3k-Kh8" firstAttribute="width" secondItem="cbJ-jt-ByM" secondAttribute="width" id="cV6-0Y-rOx"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3me-s3-k46">
+                                        <rect key="frame" x="98" y="282" width="75" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sx2-5D-KZD">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="value" keyPath="self.enabled" id="7Ud-sL-C1t"/>
+                                        </connections>
+                                    </button>
+                                    <box horizontalHuggingPriority="10" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="o61-jY-Fql">
+                                        <rect key="frame" x="0.0" y="272" width="901" height="5"/>
+                                    </box>
+                                    <textField horizontalHuggingPriority="10" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9S-TI-mhW">
+                                        <rect key="frame" x="-2" y="245" width="905" height="21"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Getting password value" allowsEditingTextAttributes="YES" id="lVS-IM-Jbi">
+                                            <font key="font" size="17" name="SFProDisplay-Semibold"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcV-XB-eYk">
+                                        <rect key="frame" x="0.0" y="216" width="901" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XVn-f3-iiX">
+                                                <rect key="frame" x="6" y="3" width="89" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Password" id="mgr-9d-s68">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <secureTextField horizontalHuggingPriority="10" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qFA-iV-At8" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                <rect key="frame" x="101" y="0.0" width="800" height="21"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Please type your password" usesSingleLineMode="YES" id="xhq-6T-y8Q">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.passwordValue" id="Wf0-hS-HiQ">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Please type your password</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="Uh7-DM-rDR"/>
+                                                </connections>
+                                            </secureTextField>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WUQ-Ys-Yoy">
+                                        <rect key="frame" x="0.0" y="187" width="901" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z6a-2C-KNy" userLabel="via Binding">
+                                                <rect key="frame" x="6" y="3" width="89" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="…via Binding" id="FN1-4S-LIr">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L3B-GB-DmU">
+                                                <rect key="frame" x="101" y="0.0" width="800" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="o2s-Kt-xqb">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.passwordValue" id="wll-5A-BrA"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZJ-Do-wth">
+                                        <rect key="frame" x="0.0" y="158" width="901" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jbU-Od-UPR" userLabel="via Delegate">
+                                                <rect key="frame" x="6" y="3" width="89" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="…via Delegate" id="zKy-bX-qvh">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wGB-Bj-Bz3">
+                                                <rect key="frame" x="101" y="0.0" width="800" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dkg-31-6EO">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <box horizontalHuggingPriority="10" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2Dw-Tw-Eej">
+                                        <rect key="frame" x="0.0" y="147" width="901" height="5"/>
+                                    </box>
+                                    <textField horizontalHuggingPriority="10" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oA-CG-eUX" userLabel="User-defined button">
+                                        <rect key="frame" x="-2" y="120" width="905" height="21"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="User-supplied show/hide button" allowsEditingTextAttributes="YES" id="326-4s-r81">
+                                            <font key="font" size="17" name="SFProDisplay-Semibold"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W8r-gu-ZbZ">
+                                        <rect key="frame" x="0.0" y="91" width="901" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tY8-Nk-stG" userLabel="password">
+                                                <rect key="frame" x="6" y="3" width="63" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Password" id="KB4-8k-TO2">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <secureTextField horizontalHuggingPriority="10" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ImX-DT-hsS" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                <rect key="frame" x="75" y="0.0" width="785" height="21"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Noodles1234." usesSingleLineMode="YES" id="c58-Rf-VxC">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="displayToggleButton" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </secureTextField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ns8-Tj-H0x">
+                                                <rect key="frame" x="868" y="4" width="33" height="14"/>
+                                                <buttonCell key="cell" type="roundTextured" title="Show" alternateTitle="Hide" bezelStyle="texturedRounded" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="4AR-dK-TSH">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="showHidePassword:" target="XfG-lQ-9wD" id="VsU-gt-6ML"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
+                                        <constraints>
+                                            <constraint firstItem="Ns8-Tj-H0x" firstAttribute="centerY" secondItem="ImX-DT-hsS" secondAttribute="centerY" id="G7a-j0-RFD"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <box horizontalHuggingPriority="10" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="h4V-6d-hyP">
+                                        <rect key="frame" x="0.0" y="80" width="901" height="5"/>
+                                    </box>
+                                    <textField horizontalHuggingPriority="10" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG9-ke-bww" userLabel="User-defined button">
+                                        <rect key="frame" x="-2" y="53" width="905" height="21"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Show/hide visibility button" allowsEditingTextAttributes="YES" id="jV7-tV-QQX">
+                                            <font key="font" size="17" name="SFProDisplay-Semibold"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDm-fs-S1L">
+                                        <rect key="frame" x="0.0" y="24" width="901" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="brM-qG-E0r" userLabel="password">
+                                                <rect key="frame" x="6" y="3" width="63" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Password" id="nGd-i2-Bxj">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <secureTextField horizontalHuggingPriority="10" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bba-MI-goL" userLabel="passwordfield" customClass="DSFSecureTextField" customModule="DSFSecureTextField">
+                                                <rect key="frame" x="75" y="0.0" width="826" height="21"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" id="v1v-Fx-Bqd">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="displayToggleButton" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowPasswordInPlainText" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </secureTextField>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oAd-F2-fF9">
+                                        <rect key="frame" x="73" y="-1" width="156" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show visibility button" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IBF-eu-d3F">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="value" keyPath="self.showPasswordToggleButton" id="qQX-Ox-Vnj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oAd-F2-fF9" firstAttribute="leading" secondItem="Bba-MI-goL" secondAttribute="leading" id="7sw-q7-vD9"/>
+                                    <constraint firstItem="3me-s3-k46" firstAttribute="leading" secondItem="O5L-XO-fZP" secondAttribute="leading" id="9b2-bB-LOb"/>
+                                    <constraint firstItem="z6a-2C-KNy" firstAttribute="width" secondItem="XVn-f3-iiX" secondAttribute="width" id="ast-jk-PE8"/>
+                                    <constraint firstItem="jbU-Od-UPR" firstAttribute="width" secondItem="XVn-f3-iiX" secondAttribute="width" id="eRr-Tv-oGu"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="iVI-tu-iZ5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="4aT-Hv-HB7"/>
-                            <constraint firstAttribute="trailing" secondItem="iVI-tu-iZ5" secondAttribute="trailing" constant="20" id="v2D-T2-dkd"/>
-                            <constraint firstItem="iVI-tu-iZ5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="x1J-ms-dwP"/>
+                            <constraint firstAttribute="trailing" secondItem="rtB-wp-bkA" secondAttribute="trailing" constant="20" symbolic="YES" id="0HE-6g-L6y"/>
+                            <constraint firstItem="rtB-wp-bkA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="2WR-63-gbB"/>
+                            <constraint firstItem="rtB-wp-bkA" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="3gK-qE-27h"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rtB-wp-bkA" secondAttribute="bottom" constant="20" symbolic="YES" id="YLg-4w-WCU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="showHidePasswordField" destination="4WU-NW-3PD" id="4oP-9g-IU9"/>
-                        <outlet property="toggleField" destination="30B-Th-8q5" id="zy4-NO-WCd"/>
+                        <outlet property="passwordValueTextViaDelegate" destination="wGB-Bj-Bz3" id="gqO-Yx-0ph"/>
+                        <outlet property="showHidePasswordField" destination="ImX-DT-hsS" id="gWy-xs-fQb"/>
+                        <outlet property="showPasswordToggleButtonField" destination="Bba-MI-goL" id="bcE-dJ-v2y"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="tyP-qS-VX5"/>
             </objects>
-            <point key="canvasLocation" x="76" y="750"/>
+            <point key="canvasLocation" x="76" y="895"/>
         </scene>
     </scenes>
 </document>

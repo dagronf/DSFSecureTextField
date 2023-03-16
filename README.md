@@ -2,7 +2,7 @@
 
 NSSecureTextField with a 'visibility' button.
 
-![](https://img.shields.io/github/v/tag/dagronf/DSFSecureTextField) ![](https://img.shields.io/badge/macOS-10.10+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/github/v/tag/dagronf/DSFSecureTextField) ![](https://img.shields.io/badge/macOS-10.13+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 ## Why
@@ -40,26 +40,43 @@ There is a very simple project in the `Demos` folder.
 
 ## Configuration
 
-### `allowShowPassword`  ![](https://img.shields.io/badge/Available-InterfaceBuilder-green) ![](https://img.shields.io/badge/Available-Code-blue)
+| Parameter                    | Type         | Description                                                 |
+|:-----------------------------|:------------:|:------------------------------------------------------------|
+| `allowPasswordInPlainText`   | `Bool`       | If true, *allows* the control to display a plain text representation of the password. Useful if you want to be able to control whether the user can choose (eg. via preferences) to make the password visible. |
+| `displayToggleButton`        | `Bool`       | If true, displays a button _within_ the control (an eye) to allow the user to toggle between secure and plain text input |
+| `visibility`                 | `Visibility` | If `.plainText`, the password is displayed in plain text.   |
 
-Set to `true` to _allow_ the control to show the password in plain text.  Useful if you want to be able to control whether the user can choose (eg. via preferences) to make the password visible.
+### `allowPasswordInPlainText`
 
-### `displayToggleButton`  ![](https://img.shields.io/badge/Available-InterfaceBuilder-green) ![](https://img.shields.io/badge/Available-Code-blue)
+A boolean flag to indicate if the field is allowed to display passwords in plain text.  
 
-When true, displays an 'eye' button embedded within the password field that allows the user to toggle the visibility of the password.
-If false, the application needs to provide its own mechanism for setting `passwordIsVisible`. 
+If true, *allows* the control to display a plain text representation of the password. Useful if you want to be able 
+to control whether the user can choose (eg. via preferences) to make the password visible. 
 
-### `passwordIsVisible`  ![](https://img.shields.io/badge/Available-Code-blue)
+### `displayToggleButton`
 
-When true, the password is displayed as plain text.
-When false, the password is obscured.
+When true, displays an 'eye' button embedded within the password field that allows the user to toggle the visibility
+of the password. 
+
+* If true, displays a button _within_ the control (an eye) to allow the user to toggle between secure and plain text input
+* If false (and `allowPasswordInPlainText` is true), the application needs to provide its own mechanism for setting 
+`visibility` as appropriate. 
+
+### `visibility`
+
+The visibility flag denotes the visibility of the text within the field
+
+| Value        | Description   |
+|--------------|:--------------|
+| `.secure`    | The content is displayed securely (eg. `●●●●●●●●`) |
+| `.plainText` | The content is displayed in plain text (eg. `gr00vy!.`) |
 
 ## License
 
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2023 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

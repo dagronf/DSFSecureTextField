@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import DSFSecureTextField
 
 class ViewController: NSViewController {
 
@@ -22,14 +23,34 @@ class ViewController: NSViewController {
 		}
 	}
 
+	@objc dynamic var enabled: Bool = true
+
 	@IBOutlet weak var toggleField: DSFSecureTextField!
 	@IBAction func toggled(_ sender: NSButton) {
-		self.toggleField.allowShowPassword = sender.state == .on
+		self.toggleField.allowPasswordInPlainText = sender.state == .on
 	}
 
 	@IBOutlet weak var showHidePasswordField: DSFSecureTextField!
 	@IBAction func showHidePassword(_ sender: NSButton) {
-		self.showHidePasswordField.passwordIsVisible = (sender.state == .on)
+		self.showHidePasswordField.visibility = (sender.state == .on) ? .plainText : .secure
+	}
+
+	// Detecting changes
+	@objc dynamic var passwordValue: String? = nil
+	@IBOutlet weak var passwordValueTextViaDelegate: NSTextField!
+
+
+	@IBOutlet weak var showPasswordToggleButtonField: DSFSecureTextField!
+	@objc dynamic var showPasswordToggleButton: Bool = true {
+		didSet {
+			self.showPasswordToggleButtonField.allowPasswordInPlainText = showPasswordToggleButton
+		}
 	}
 }
 
+extension ViewController: NSTextFieldDelegate {
+	func controlTextDidChange(_ obj: Notification) {
+		guard let s = obj.object as? NSSecureTextField else { fatalError() }
+		passwordValueTextViaDelegate.stringValue = s.stringValue
+	}
+}
