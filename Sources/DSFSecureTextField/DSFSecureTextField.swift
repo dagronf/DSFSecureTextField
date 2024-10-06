@@ -189,16 +189,6 @@ private extension DSFSecureTextField {
 			}
 		}
 
-//		newCell.isEditable = true
-//		newCell.placeholderString = oldCell.placeholderString
-//		newCell.isScrollable = true
-//		newCell.font = oldCell.font
-//		newCell.isBordered = oldCell.isBordered
-//		newCell.isBezeled = oldCell.isBezeled
-//		newCell.backgroundStyle = oldCell.backgroundStyle
-//		newCell.bezelStyle = oldCell.bezelStyle
-//		newCell.drawsBackground = oldCell.drawsBackground
-
 		newCell.isEditable = oldCell.isEditable
 		newCell.isEnabled = oldCell.isEnabled
 		newCell.isEditable = oldCell.isEditable
@@ -216,6 +206,7 @@ private extension DSFSecureTextField {
 		newCell.formatter = oldCell.formatter
 		newCell.alignment = oldCell.alignment
 		newCell.stringValue = oldCell.stringValue
+		newCell.controlSize = oldCell.controlSize
 
 		self.cell?.stringValue = str
 
