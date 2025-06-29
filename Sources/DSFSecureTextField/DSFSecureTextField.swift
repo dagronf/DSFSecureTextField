@@ -158,9 +158,15 @@ private extension DSFSecureTextField {
 
 	func updateForPasswordVisibility() {
 		let str = self.cell?.stringValue ?? ""
+		let hasFocus = self.window?.firstResponder == self.currentEditor()
+		var selectedRange: NSRange? = nil
 
-		if self.window?.firstResponder == self.currentEditor() {
+		if hasFocus {
 			// Text field has focus.
+			if let editor = self.currentEditor() as? NSTextView {
+				// Save current selectedRange
+				selectedRange = editor.selectedRange()
+			}
 			self.abortEditing()
 		}
 
@@ -214,6 +220,13 @@ private extension DSFSecureTextField {
 		self.needsUpdateConstraints = true
 		self.needsLayout = true
 		self.needsDisplay = true
+
+		if hasFocus {
+			self.window?.makeFirstResponder(self)
+			if let selectedRange, let editor = self.currentEditor() as? NSTextView {
+				editor.setSelectedRange(selectedRange)
+			}
+		}
 	}
 }
 
