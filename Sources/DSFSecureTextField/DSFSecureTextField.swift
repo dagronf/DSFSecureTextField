@@ -27,6 +27,7 @@
 import AppKit
 
 /// A secure text field with the ability to (optionally) show the plain text password
+@MainActor
 @IBDesignable
 public class DSFSecureTextField: NSSecureTextField {
 
@@ -88,6 +89,7 @@ public class DSFSecureTextField: NSSecureTextField {
 
 // MARK: - Private (DSFSecureTextField)
 
+@MainActor
 private extension DSFSecureTextField {
 	func configureButtonForVisibility() {
 
@@ -237,6 +239,7 @@ private extension DSFSecureTextField {
 	return newRect
 }
 
+@MainActor
 private class DSFSecureTextFieldCell: NSSecureTextFieldCell {
 	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
 		super.select(withFrame: __tweak(self, rect), in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
@@ -253,6 +256,7 @@ private class DSFSecureTextFieldCell: NSSecureTextFieldCell {
 	}
 }
 
+@MainActor
 private class DSFPlainTextFieldCell: NSTextFieldCell {
 	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
 		super.select(withFrame: __tweak(self, rect), in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
