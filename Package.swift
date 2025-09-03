@@ -1,30 +1,23 @@
-// swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version: 5.6
 
 import PackageDescription
 
 let package = Package(
-    name: "DSFSecureTextField",
-    platforms: [
-        .macOS(.v10_13)
-    ],
-    products: [
-        .library(name: "DSFSecureTextField", targets: ["DSFSecureTextField"]),
-		  .library(name: "DSFSecureTextFieldStatic", type: .static, targets: ["DSFSecureTextField"]),
-		  .library(name: "DSFSecureTextFieldDynamic", type: .dynamic, targets: ["DSFSecureTextField"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "DSFSecureTextField",
-            dependencies: []),
-        .testTarget(
-            name: "DSFSecureTextFieldTests",
-            dependencies: ["DSFSecureTextField"]),
-    ]
+	name: "DSFSecureTextField",
+	platforms: [
+		.macOS(.v10_13)
+	],
+	products: [
+		.library(name: "DSFSecureTextField", targets: ["DSFSecureTextField"]),
+		.library(name: "DSFSecureTextFieldStatic", type: .static, targets: ["DSFSecureTextField"]),
+		.library(name: "DSFSecureTextFieldDynamic", type: .dynamic, targets: ["DSFSecureTextField"]),
+	],
+	targets: [
+		.target(
+			name: "DSFSecureTextField",
+			dependencies: []),
+		.testTarget(
+			name: "DSFSecureTextFieldTests",
+			dependencies: ["DSFSecureTextField"]),
+	]
 )
