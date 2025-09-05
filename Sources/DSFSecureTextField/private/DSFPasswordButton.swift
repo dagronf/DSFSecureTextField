@@ -29,18 +29,16 @@ import Foundation
 
 // MARK: - Private implementation (Embedded button)
 
-@MainActor
-class DSFPasswordButton: NSButton {
-	private enum Translation {
+extension DSFPasswordButton {
+	enum Translation {
 		static var toggle: String {
 			NSLocalizedString("Toggle password visibility", comment: "Button used to toggle whether the password is shown in the clear or obscured")
 		}
 	}
+}
 
-	/// State observer for the button.
-	///
-	/// Note that we have to attach it to the _cell's_ state, as the NSButton state is not marked as `dynamic` in Swift.
-	private var stateObserver: NSKeyValueObservation?
+@MainActor
+class DSFPasswordButton: NSButton {
 
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
@@ -49,28 +47,26 @@ class DSFPasswordButton: NSButton {
 
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
-	}
-
-	override func awakeFromNib() {
-		super.awakeFromNib()
 		self.setup()
-	}
-
-	override var cell: NSCell? {
-		get {
-			super.cell
-		}
-		set {
-			super.cell = newValue
-		}
 	}
 
 	private func setup() {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		self.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+
+		self.setButtonType(.toggle)
+
 		self.isBordered = false
-		self.imagePosition = .noImage
+
+		self.title = "secure"
+		self.alternateTitle = "not secure"
+
+		self.imagePosition = .imageOnly
+		self.imageScaling = .scaleProportionallyDown
+
+		self.image = offImage__
+		self.alternateImage = onImage__
 
 		self.toolTip = Translation.toggle
 	}
@@ -91,15 +87,17 @@ class DSFPasswordButton: NSButton {
 		self.addTrackingArea(nte)
 	}
 
+	// MARK: Mouse tracking
+
 	override func mouseMoved(with event: NSEvent) {
 		super.mouseMoved(with: event)
-		if isEnabled {
+		if self.isEnabled {
 			NSCursor.pointingHand.set()
 		}
 	}
 
 	override public func mouseEntered(with event: NSEvent) {
-		if isEnabled {
+		if self.isEnabled {
 			NSCursor.pointingHand.set()
 		}
 	}
@@ -107,28 +105,11 @@ class DSFPasswordButton: NSButton {
 	override public func mouseExited(with event: NSEvent) {
 		NSCursor.arrow.set()
 	}
-
-	// MARK: Drawing
-
-	override func draw(_ dirtyRect: NSRect) {
-		// The color for the current state
-		let currentColor = self.isEnabled ? NSColor.secondaryLabelColor : NSColor.disabledControlTextColor
-
-		// The path for the current state
-		let eyePath = ((state == .off) ? offPath__ : onPath__).copy() as! NSBezierPath
-
-		// Scale the path to fit the current bounds
-		var t = AffineTransform()
-		t.scale(self.bounds.width / 32.0)
-		eyePath.transform(using: t)
-
-		// And fill!
-		currentColor.setFill()
-		eyePath.fill()
-	}
 }
 
 // MARK: - Icon paths
+
+// MARK: Off (secure) image
 
 // 32x32 icon for the 'off' state
 private let offPath__: NSBezierPath = {
@@ -221,6 +202,18 @@ private let offPath__: NSBezierPath = {
 	return textPath
 }()
 
+private let offImage__: NSImage = {
+	let image = NSImage(size: NSSize(width: 32, height: 32), flipped: false) { rect in
+		NSColor.black.setFill()
+		offPath__.fill()
+		return true
+	}
+	image.isTemplate = true
+	return image
+}()
+
+// MARK: On (not secure) image
+
 // 32x32 icon for the 'on' state
 private let onPath__: NSBezierPath = {
 	let textPath = NSBezierPath()
@@ -292,4 +285,14 @@ private let onPath__: NSBezierPath = {
 	textPath.curve(to: NSPoint(x: 15.96, y: 9.9), controlPoint1: NSPoint(x: 13.8, y: 10.18), controlPoint2: NSPoint(x: 14.83, y: 9.9))
 	textPath.close()
 	return textPath
+}()
+
+private let onImage__: NSImage = {
+	let image = NSImage(size: NSSize(width: 32, height: 32), flipped: false) { rect in
+		NSColor.black.setFill()
+		onPath__.fill()
+		return true
+	}
+	image.isTemplate = true
+	return image
 }()

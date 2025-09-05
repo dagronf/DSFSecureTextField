@@ -128,12 +128,12 @@ private extension DSFSecureTextField {
 					multiplier: 1, constant: -4
 				))
 
-			button.addConstraint(
+			self.addConstraint(
 				NSLayoutConstraint(
 					item: button, attribute: .height,
 					relatedBy: .equal,
-					toItem: nil, attribute: .notAnAttribute,
-					multiplier: 1, constant: 24
+					toItem: self, attribute: .height,
+					multiplier: 1, constant: 0
 				)
 			)
 		}
