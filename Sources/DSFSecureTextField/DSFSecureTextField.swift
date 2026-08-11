@@ -142,9 +142,6 @@ private extension DSFSecureTextField {
 	func setup() {
 		self.translatesAutoresizingMaskIntoConstraints = false
 
-		// By default, the password should ALWAYS be hidden
-		self.visibility = .secure
-
 		self.configureButtonForVisibility()
 		self.updateForPasswordVisibility()
 	}

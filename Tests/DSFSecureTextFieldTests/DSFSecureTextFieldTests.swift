@@ -2,14 +2,22 @@ import XCTest
 @testable import DSFSecureTextField
 
 final class DSFSecureTextFieldTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        // XCTAssertEqual(DSFSecureTextField().text, "Hello, World!")
+    func testVisibilityDefaultsToSecure() {
+        XCTAssertEqual(DSFSecureTextField().visibility, .secure)
+    }
+
+    func testVisibilitySurvivesViewSetup() {
+        let textField = DSFSecureTextField()
+        textField.allowPasswordInPlainText = true
+        textField.visibility = .plainText
+
+        textField.viewDidMoveToWindow()
+
+        XCTAssertEqual(textField.visibility, .plainText)
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testVisibilityDefaultsToSecure", testVisibilityDefaultsToSecure),
+        ("testVisibilitySurvivesViewSetup", testVisibilitySurvivesViewSetup),
     ]
 }
