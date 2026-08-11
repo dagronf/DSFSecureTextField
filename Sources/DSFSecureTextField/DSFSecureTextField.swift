@@ -36,16 +36,26 @@ public class DSFSecureTextField: NSSecureTextField {
 		case plainText = 1
 	}
 
+	// MARK: allowPasswordInPlainText
+
 	/// Can the password be displayed in plain text?
 	@IBInspectable public dynamic var allowPasswordInPlainText: Bool = false {
 		didSet {
-			if allowPasswordInPlainText == false {
+			if self.allowPasswordInPlainText == false {
 				self.visibility = .secure
 			}
 			self.configureButtonForVisibility()
 			self.updateForPasswordVisibility()
 		}
 	}
+
+	@discardableResult @inlinable
+	func allowPasswordInPlainText(_ value: Bool) -> Self {
+		self.allowPasswordInPlainText = value
+		return self
+	}
+
+	// MARK: displayToggleButton
 
 	/// Whether to display a toggle button into the control to control the visibility
 	@IBInspectable public dynamic var displayToggleButton: Bool = true {
@@ -54,6 +64,14 @@ public class DSFSecureTextField: NSSecureTextField {
 		}
 	}
 
+	@discardableResult @inlinable
+	func displayToggleButton(_ value: Bool) -> Self {
+		self.displayToggleButton = value
+		return self
+	}
+
+	// MARK: visibility
+
 	/// The password field visibility
 	@IBInspectable public dynamic var visibility: Visibility = .secure {
 		didSet {
@@ -61,11 +79,27 @@ public class DSFSecureTextField: NSSecureTextField {
 		}
 	}
 
+	/// Set the visibility for the password field
+	@discardableResult @inlinable
+	func visibility(_ value: Visibility) -> Self {
+		self.visibility = value
+		return self
+	}
+
 	public override var isEnabled: Bool {
 		didSet {
 			self.visibilityButton?.isEnabled = self.isEnabled
 		}
 	}
+
+	/// Set the text content for the password field
+	@discardableResult @inlinable
+	func text(_ value: String) -> Self {
+		self.stringValue = value
+		return self
+	}
+
+	// MARK: - Constructors
 
 	override public init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
@@ -159,6 +193,9 @@ private extension DSFSecureTextField {
 		let str = self.cell?.stringValue ?? ""
 		let hasFocus = self.window?.firstResponder == self.currentEditor()
 		var selectedRange: NSRange? = nil
+
+		// Make sure our button is in the correct state
+		self.visibilityButton?.state = self.visibility == .plainText ? .on : .off
 
 		if hasFocus {
 			// Text field has focus.
@@ -272,3 +309,45 @@ private class DSFPlainTextFieldCell: NSTextFieldCell {
 		super.drawInterior(withFrame: __tweak(self, cellFrame), in: controlView)
 	}
 }
+
+// MARK: - Previews
+
+#if DEBUG
+
+@available(macOS 14, *)
+#Preview("default secure text") {
+	DSFSecureTextField()
+}
+
+@available(macOS 14, *)
+#Preview("no toggle") {
+	DSFSecureTextField()
+		.text("field without toggle button")
+}
+
+@available(macOS 14, *)
+#Preview("show toggle") {
+	DSFSecureTextField()
+		.allowPasswordInPlainText(true)
+		.displayToggleButton(true)
+		.text("Show toggle button")
+}
+
+@available(macOS 14, *)
+#Preview("show toggle 2") {
+	DSFSecureTextField()
+		.allowPasswordInPlainText(false)
+		.displayToggleButton(true)
+		.text("Show toggle button")
+}
+
+@available(macOS 14, *)
+#Preview("default plain text") {
+	DSFSecureTextField()
+		.visibility(.plainText)         // By default, show the plain text
+		.allowPasswordInPlainText(true)
+		.displayToggleButton(true)
+		.text("default plain text")
+}
+
+#endif

@@ -15,9 +15,11 @@ let package = Package(
 	targets: [
 		.target(
 			name: "DSFSecureTextField",
-			dependencies: []),
+			dependencies: []
+		),
 		.testTarget(
 			name: "DSFSecureTextFieldTests",
-			dependencies: ["DSFSecureTextField"]),
+			dependencies: ["DSFSecureTextField"]
+		),
 	]
 )

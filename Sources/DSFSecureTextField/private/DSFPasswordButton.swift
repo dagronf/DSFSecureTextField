@@ -89,16 +89,21 @@ class DSFPasswordButton: NSButton {
 
 	// MARK: Mouse tracking
 
-	override func mouseMoved(with event: NSEvent) {
-		super.mouseMoved(with: event)
-		if self.isEnabled {
-			NSCursor.pointingHand.set()
-		}
-	}
-
 	override public func mouseEntered(with event: NSEvent) {
 		if self.isEnabled {
 			NSCursor.pointingHand.set()
+		}
+		else {
+			NSCursor.arrow.set()
+		}
+	}
+
+	override public func mouseMoved(with event: NSEvent) {
+		if self.isEnabled {
+			NSCursor.pointingHand.set()
+		}
+		else {
+			NSCursor.arrow.set()
 		}
 	}
 
@@ -106,6 +111,50 @@ class DSFPasswordButton: NSButton {
 		NSCursor.arrow.set()
 	}
 }
+
+// MARK: - Previews
+
+#if DEBUG
+
+private extension DSFPasswordButton {
+	@discardableResult func state(_ state: NSButton.StateValue) -> Self {
+		self.state = state
+		return self
+	}
+	@discardableResult func enabled(_ state: Bool) -> Self {
+		self.isEnabled = state
+		return self
+	}
+}
+
+@available(macOS 14, *)
+#Preview("default state") {
+	DSFPasswordButton()
+}
+
+@available(macOS 14, *)
+#Preview("disabled") {
+	DSFPasswordButton()
+		.enabled(false)
+}
+
+@available(macOS 14, *)
+#Preview("off state") {
+	DSFPasswordButton()
+		.state(.off)
+}
+
+@available(macOS 14, *)
+#Preview("on state") {
+	DSFPasswordButton()
+		.state(.on)
+}
+
+#endif
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
 // MARK: - Icon paths
 
